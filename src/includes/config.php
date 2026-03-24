@@ -5,7 +5,7 @@
 
 define('SITE_NAME', '助ズ');
 define('SITE_NAME_EN', 'joz');
-define('SITE_DESCRIPTION', 'システム開発・ITコンサルティングの助ズ');
+define('SITE_DESCRIPTION', '助ズ（joz）は神奈川県のシステム開発・ITコンサルティング会社です。Webアプリ開発からコーポレートサイト制作まで、テクノロジーでビジネスを支援します。');
 define('SITE_URL', 'https://joz.co.jp');
 
 // 会社情報
