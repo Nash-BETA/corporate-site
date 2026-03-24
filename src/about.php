@@ -27,20 +27,12 @@ require_once __DIR__ . '/includes/header.php';
                     <td><?= h(COMPANY_FOUNDED) ?></td>
                 </tr>
                 <tr>
-                    <th>代表者</th>
-                    <td><?= h(COMPANY_CEO) ?></td>
-                </tr>
-                <tr>
                     <th>所在地</th>
                     <td><?= h(COMPANY_ADDRESS) ?></td>
                 </tr>
                 <tr>
                     <th>事業内容</th>
                     <td><?= h(COMPANY_SERVICES) ?></td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td><a href="mailto:<?= h(COMPANY_EMAIL) ?>"><?= h(COMPANY_EMAIL) ?></a></td>
                 </tr>
             </table>
         </div>
