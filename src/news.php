@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/functions.php';
 
 $pageTitle = 'お知らせ';
-$pageDescription = '助ズ（joz）からのお知らせ・プレスリリース一覧。';
+$pageDescription = '助ズ（joz）からのお知らせ・プレスリリース一覧。サービスの最新情報、事業に関するニュースをお届けします。';
 $newsData = getNewsData();
 
 require_once __DIR__ . '/includes/header.php';
@@ -14,6 +14,7 @@ require_once __DIR__ . '/includes/header.php';
             <h1>お知らせ</h1>
             <p class="page-header-en">News</p>
         </div>
+        <div class="page-header-deco"></div>
     </div>
 
     <section class="section">

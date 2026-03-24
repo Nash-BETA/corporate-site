@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $pageTitle = 'お問い合わせ';
-$pageDescription = '助ズ（joz）へのお問い合わせはこちらから。';
+$pageDescription = '助ズ（joz）へのお問い合わせ。システム開発・ITコンサルティングに関するご相談、お見積り依頼など、お気軽にお問い合わせください。';
 
 $errors = [];
 $name = '';
@@ -63,6 +63,7 @@ require_once __DIR__ . '/includes/header.php';
             <h1>お問い合わせ</h1>
             <p class="page-header-en">Contact</p>
         </div>
+        <div class="page-header-deco"></div>
     </div>
 
     <section class="section">
@@ -107,7 +108,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn">確認画面へ</button>
+                    <button type="submit" class="btn">確認画面へ <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button>
                 </div>
             </form>
         </div>

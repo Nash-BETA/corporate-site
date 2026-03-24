@@ -18,7 +18,7 @@ if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
 
 $data = $_SESSION['contact_data'];
 
-// メール送信
+// 管理者への通知メール
 $to = CONTACT_TO_EMAIL;
 $mailSubject = CONTACT_SUBJECT_PREFIX . sanitizeMailHeader($data['subject']);
 $mailBody = "以下のお問い合わせがありました。\n\n"
@@ -30,11 +30,40 @@ $mailBody = "以下のお問い合わせがありました。\n\n"
     . "お問い合わせ内容:\n"
     . $data['message'] . "\n";
 
-$headers = "From: " . sanitizeMailHeader($data['email']) . "\r\n"
+$headers = "From: " . sanitizeMailHeader(CONTACT_TO_EMAIL) . "\r\n"
     . "Reply-To: " . sanitizeMailHeader($data['email']) . "\r\n"
     . "Content-Type: text/plain; charset=UTF-8\r\n";
 
 @mail($to, $mailSubject, $mailBody, $headers);
+
+// お客様への自動返信メール
+$replySubject = "【助ズ】お問い合わせありがとうございます";
+$replyBody = "{$data['name']} 様\n\n"
+    . "この度はお問い合わせいただき、誠にありがとうございます。\n"
+    . "以下の内容でお問い合わせを受け付けました。\n\n"
+    . "━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    . "件名: {$data['subject']}\n"
+    . "━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    . "お問い合わせ内容:\n"
+    . $data['message'] . "\n\n"
+    . "━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    . "内容を確認の上、担当者より折り返しご連絡いたします。\n"
+    . "通常2〜3営業日以内にご返信いたしますので、\n"
+    . "しばらくお待ちくださいますようお願いいたします。\n\n"
+    . "※このメールは自動返信です。\n"
+    . "　このメールへのご返信はお控えください。\n\n"
+    . "──────────────────────\n"
+    . COMPANY_NAME . "（" . COMPANY_NAME_EN . "）\n"
+    . COMPANY_ADDRESS . "\n"
+    . "Email: " . CONTACT_TO_EMAIL . "\n"
+    . "Web: " . SITE_URL . "\n"
+    . "──────────────────────\n";
+
+$replyHeaders = "From: " . sanitizeMailHeader(CONTACT_TO_EMAIL) . "\r\n"
+    . "Reply-To: " . sanitizeMailHeader(CONTACT_TO_EMAIL) . "\r\n"
+    . "Content-Type: text/plain; charset=UTF-8\r\n";
+
+@mail(sanitizeMailHeader($data['email']), $replySubject, $replyBody, $replyHeaders);
 
 // セッションクリア
 unset($_SESSION['contact_data']);
